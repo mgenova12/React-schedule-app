@@ -25,7 +25,7 @@ export default class Schedule extends React.Component {
             <tbody>
               <tr>
                 <td><div>Name Time remove</div></td>
-                <td><div>Name2 Time2 <RemoveButton/> </div></td>
+                <td><div>Name2 Time2</div></td>
               </tr>
 
               <tr> 
