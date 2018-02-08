@@ -1,10 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
+import {AddCell} from './AddCell'
 
 export default class Schedule extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { 
+      Monday: ['hi']
+    };
+    this.onAddCell = this.onAddCell.bind(this);
+  }
+
+  onAddCell(){
+    this.setState({
+      Monday: this.state.Monday.concat('hello')
+    });
+  }
+
   render(){
+    
+    let Cell = this.state.Monday.map(category => {
+      return   <tr> 
+                <td><div>Name Time remove</div></td>
+              </tr>
+    })
+
     return(
       <div> 
         <div>
@@ -25,15 +46,15 @@ export default class Schedule extends React.Component {
             <tbody>
               <tr>
                 <td><div>Name Time remove</div></td>
-                <td><div>Name2 Time2</div></td>
               </tr>
-
               <tr> 
                 <td><div>Name Time remove</div></td>
               </tr>
+              
+              {Cell}
 
               <tr> 
-                <td><div>add</div></td>
+                <td> <button onClick={this.onAddCell}>+</button></td>
                 <td><div>add</div></td>
                 <td><div>add</div></td>
                 <td><div>add</div></td>
