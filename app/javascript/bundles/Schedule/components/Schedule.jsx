@@ -7,52 +7,89 @@ export default class Schedule extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      Monday: ['hi']
+      Pizza: {Monday: {Name: 'Marco', Time: '10:30-3', ColumnNum: 3}, Tuesday: {Name: 'Marco', Time: '10:30-3', ColumnNum: 2}}
     };
     this.onAddCell = this.onAddCell.bind(this);
   }
 
   onAddCell(){
+    let col = Object.assign({}, this.state.Pizza)
+    col.Monday['ColumnNum'] = col.Monday['ColumnNum'] + 1
     this.setState({
-      Monday: this.state.Monday.concat('hello')
-    });
+      Pizza:col
+    })
   }
 
   render(){
-    
-    let Cell = this.state.Monday.map(category => {
-      return   <tr> 
-                <td><div>Name Time remove</div></td>
-              </tr>
-    })
 
     return(
-      <div> 
-        <div>
-
+      <div>
+        {this.state.Pizza.Monday['ColumnNum']}
         <h2>Schedule</h2>
-        
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th scope="col">Monday</th>
-                <th scope="col">Tuesday</th>
-                <th scope="col">Wednesday</th>
-                <th scope="col">Thursday</th>
-                <th scope="col">Friday</th>
-                <th scope="col">Saturday</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><div>Name Time remove</div></td>
-              </tr>
-              <tr> 
-                <td><div>Name Time remove</div></td>
-              </tr>
-              
-              {Cell}
-
+        <table className="table table-bordered">
+          <tbody>
+            <tr>
+              <td>
+                  <table className="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th scope="col">Monday</th>
+                          </tr>
+                      </thead>
+                        <AddCell colNum={this.state.Pizza.Monday['ColumnNum']}/>
+                  </table>
+              </td>
+              <td>
+                  <table className="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th scope="col">Tuesday</th>
+                          </tr>
+                      </thead>
+                      <AddCell colNum={this.state.Pizza.Tuesday['ColumnNum']}/>
+                  </table>
+              </td>              
+              <td>
+                  <table className="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th scope="col">Wednesday</th>
+                          </tr>
+                      </thead>
+                      <AddCell colNum={this.state.Pizza.Tuesday['ColumnNum']}/>
+                  </table>
+              </td>              
+              <td>
+                  <table className="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th scope="col">Thursay</th>
+                          </tr>
+                      </thead>
+                      <AddCell colNum={this.state.Pizza.Tuesday['ColumnNum']}/>
+                  </table>
+              </td>              
+              <td>
+                  <table className="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th scope="col">Friday</th>
+                          </tr>
+                      </thead>
+                      <AddCell colNum={this.state.Pizza.Tuesday['ColumnNum']}/>
+                  </table>
+              </td>              
+              <td>
+                  <table className="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th scope="col">Saturday</th>
+                          </tr>
+                      </thead>
+                      <AddCell colNum={this.state.Pizza.Tuesday['ColumnNum']}/>
+                  </table>
+              </td>
+            </tr>
               <tr> 
                 <td> <button onClick={this.onAddCell}>+</button></td>
                 <td><div>add</div></td>
@@ -61,11 +98,10 @@ export default class Schedule extends React.Component {
                 <td><div>add</div></td>
                 <td><div>add</div></td>
               </tr>
+          </tbody>
+        </table>
 
-            </tbody>
-          </table>
 
-        </div>
 
       </div>
     )
