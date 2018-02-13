@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {AddCell} from './AddCell'
+import {AddAfternoon} from './AddAfternoon'
+import {AddMorning} from './AddMorning'
+
 
 export default class Schedule extends React.Component {
 
@@ -33,7 +35,16 @@ export default class Schedule extends React.Component {
 
   render(){
     return(
-      <AddCell pizza={this.state.Pizza} />
+      <div>
+        <h2>Pizza Schedule</h2>
+          <table className="table table-bordered">
+             
+            <AddMorning pizzaMorning={this.state.Pizza} />
+            <AddAfternoon pizzaAfternoon={this.state.Pizza} />
+
+        </table>
+      </div>
+
     )
   }
 }
