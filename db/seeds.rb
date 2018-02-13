@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do 
+  Pizza.create(day:['Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday' ].sample ,time_of_day:['Morning', 'Afternoon'].sample , name: Faker::Name.first_name, time: '10:30-3')
+end
