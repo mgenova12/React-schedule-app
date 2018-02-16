@@ -37,7 +37,6 @@ class Api::V1::PizzasController < ApplicationController
 
     pizza.save
 
-    render 'show.json.jbuilder'
   end
 
 end

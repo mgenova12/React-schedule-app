@@ -9,7 +9,7 @@ export class AddMorning extends React.Component {
       };
 
       $.post('api/v1/pizza', parameters, function(response) {
-        console.log(response);
+
       });
     };
 
