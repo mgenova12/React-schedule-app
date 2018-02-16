@@ -2,6 +2,18 @@ import React from 'react'
 
 export class AddMorning extends React.Component {
 
+    onAddCellMonday(){
+      var parameters = {
+        day: "Monday",
+        time_of_day: "Morning"
+      };
+
+      $.post('api/v1/pizza', parameters, function(response) {
+        console.log(response);
+      });
+    };
+
+
   render() {
     let monMorning;
     let tuesMorning;
@@ -116,6 +128,7 @@ export class AddMorning extends React.Component {
             </tr>
             <tr> 
               <td><button onClick={this.onAddCellMonday}>Add +</button></td>
+
               <td><button onClick={this.onAddCellTuesday}>Add +</button></td>
               <td><button onClick={this.onAddCellWednesday}>Add +</button></td>
               <td><button onClick={this.onAddCellThursday}>Add +</button></td>

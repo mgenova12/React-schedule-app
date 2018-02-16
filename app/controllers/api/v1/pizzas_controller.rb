@@ -1,4 +1,6 @@
 class Api::V1::PizzasController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index 
     @MonMornings = Pizza.where(time_of_day:'Morning').where(day:"Monday")
     @MonAfternoons = Pizza.where(time_of_day:'Afternoon').where(day:"Monday")
@@ -19,6 +21,23 @@ class Api::V1::PizzasController < ApplicationController
     @SatAfternoons = Pizza.where(time_of_day:'Afternoon').where(day:"Saturday")
 
     render 'index.json.jbuilder'
+  end
+
+  def show 
+    @pizza = Pizza.find_by(id: params[:id])
+
+    render 'show.json.jbuilder'
+  end
+
+  def create 
+    pizza = Pizza.new(
+      day: params[:day],
+      time_of_day: params[:time_of_day]
+    )
+
+    pizza.save
+
+    render 'show.json.jbuilder'
   end
 
 end

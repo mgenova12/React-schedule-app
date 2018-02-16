@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   namespace :api do 
     namespace :v1 do 
       get '/pizza' => 'pizzas#index'
+      post '/pizza' => 'pizzas#create'
+      get 'pizza/:id' => 'pizzas#show'
     end
   end
 
