@@ -33,13 +33,19 @@ export default class Schedule extends React.Component {
     this.getPizza();
   }
 
+  handleAddMorningCell(cell){
+    let pizza = this.state.Pizza    
+    pizza.Morning.Monday.push(cell)
+    this.setState({Pizza:pizza})
+  }
+
   render(){
     return(
       <div>
         <h2>Pizza Schedule</h2>
           <table className="table table-bordered">
              
-            <AddMorning pizzaMorning={this.state.Pizza} />
+            <AddMorning pizzaMorning={this.state.Pizza} AddCell={this.handleAddMorningCell.bind(this)} />
             <AddAfternoon pizzaAfternoon={this.state.Pizza} />
 
         </table>

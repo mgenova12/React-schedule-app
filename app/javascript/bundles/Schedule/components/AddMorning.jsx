@@ -1,6 +1,14 @@
 import React from 'react'
 
 export class AddMorning extends React.Component {
+    constructor(){
+      super();
+      this.state = {
+        newCell:{}
+
+      }
+      this.onAddCellMonday = this.onAddCellMonday.bind(this);
+    }
 
     onAddCellMonday(){
       var parameters = {
@@ -9,8 +17,14 @@ export class AddMorning extends React.Component {
       };
 
       $.post('api/v1/pizza', parameters, function(response) {
+        this.setState({newCell:{
+          day: "Monday",
+          time_of_day: "Morning"
+        }}, function(){
+          this.props.AddCell(this.state.newCell)
 
-      });
+        }.bind(this))
+      }.bind(this));
     };
 
 
@@ -128,7 +142,6 @@ export class AddMorning extends React.Component {
             </tr>
             <tr> 
               <td><button onClick={this.onAddCellMonday}>Add +</button></td>
-
               <td><button onClick={this.onAddCellTuesday}>Add +</button></td>
               <td><button onClick={this.onAddCellWednesday}>Add +</button></td>
               <td><button onClick={this.onAddCellThursday}>Add +</button></td>
