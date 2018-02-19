@@ -11,22 +11,41 @@ export class AddMorning extends React.Component {
     }
 
     onAddCellMonday(){
+      var countId = 21;
       var parameters = {
+        id: uuidv4(),
         day: "Monday",
         time_of_day: "Morning"
       };
 
-      $.post('api/v1/pizza', parameters, function(response) {
-        this.setState({newCell:{
-          day: "Monday",
-          time_of_day: "Morning"
-        }}, function(){
-          this.props.AddCell(this.state.newCell)
+      $.ajax({
+        type: 'POST',
+        url: '/api/v1/pizza',
+        dataType: 'json',
+        data: parameters,
+        cache: false,
+        success: function(response){
+          this.setState({          
+          newCell:{
+            id: response.id,
+            day: "Monday",
+            time_of_day: "Morning"
+          }}, function(){
+            this.props.AddCell(this.state.newCell)
+          });
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.log(err);
+        }
+      });
 
-        }.bind(this))
-      }.bind(this));
-    };
+    }
 
+
+    onDeleteCellMonday(id){
+
+
+    }
 
   render() {
     let monMorning;
@@ -39,37 +58,37 @@ export class AddMorning extends React.Component {
     if(this.props.pizzaMorning){
       monMorning = this.props.pizzaMorning.Morning.Monday.map(Mon => {
         return (
-          <tr key={Mon.id}><td><div>Name: {Mon.name} <br/>Time: {Mon.time}</div></td></tr>
+          <tr key={Mon.id}><td><div>Name: {Mon.name} <br/>Time: {Mon.time}</div><button onClick={this.onDeleteCellMonday}>Delete</button></td></tr>
         );
       })
 
       tuesMorning = this.props.pizzaMorning.Morning.Tuesday.map(Tues => {
         return (
-          <tr key={Tues.id}><td><div>Name: {Tues.name} <br/>Time: {Tues.time}</div></td></tr>
+          <tr key={Tues.id}><td><div>Name: {Tues.name} <br/>Time: {Tues.time}</div><button>Delete</button></td></tr>
         );
       })  
 
       wedMorning = this.props.pizzaMorning.Morning.Wednesday.map(Wed => {
         return (
-          <tr key={Wed.id}><td><div>Name: {Wed.name} <br/>Time: {Wed.time}</div></td></tr>
+          <tr key={Wed.id}><td><div>Name: {Wed.name} <br/>Time: {Wed.time}</div><button>Delete</button></td></tr>
         );
       })
 
       thursMorning = this.props.pizzaMorning.Morning.Thursday.map(Thurs => {
         return (
-          <tr key={Thurs.id}><td><div>Name: {Thurs.name} <br/>Time: {Thurs.time}</div></td></tr>
+          <tr key={Thurs.id}><td><div>Name: {Thurs.name} <br/>Time: {Thurs.time}</div><button>Delete</button></td></tr>
         );
       })
 
       friMorning = this.props.pizzaMorning.Morning.Friday.map(Fri => {
         return (
-          <tr key={Fri.id}><td><div>Name: {Fri.name} <br/>Time: {Fri.time}</div></td></tr>
+          <tr key={Fri.id}><td><div>Name: {Fri.name} <br/>Time: {Fri.time}</div><button>Delete</button></td></tr>
         );
       })
 
       satMorning = this.props.pizzaMorning.Morning.Saturday.map(Sat => {
         return (
-          <tr key={Sat.id}><td><div>Name: {Sat.name} <br/>Time: {Sat.time}</div></td></tr>
+          <tr key={Sat.id}><td><div>Name: {Sat.name} <br/>Time: {Sat.time}</div><button>Delete</button></td></tr>
         );
       })                  
 

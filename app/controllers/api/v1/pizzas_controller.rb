@@ -30,12 +30,13 @@ class Api::V1::PizzasController < ApplicationController
   end
 
   def create 
-    pizza = Pizza.new(
+    @pizza = Pizza.create!(
+      id: params[:id],
       day: params[:day],
       time_of_day: params[:time_of_day]
     )
 
-    pizza.save
+    render 'show.json.jbuilder'
 
   end
 
