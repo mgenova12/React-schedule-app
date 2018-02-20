@@ -8,12 +8,41 @@ export class AddMorning extends React.Component {
 
       }
       this.onAddCellMonday = this.onAddCellMonday.bind(this);
+      this.onAddCellTuesday = this.onAddCellTuesday.bind(this);
     }
 
     onAddCellMonday(){
       var parameters = {
-        id: uuidv4(),
         day: "Monday",
+        time_of_day: "Morning"
+      };
+
+      $.ajax({
+        type: 'POST',
+        url: '/api/v1/pizza',
+        dataType: 'json',
+        data: parameters,
+        cache: false,
+        success: function(response){
+          console.log(response)
+          this.setState({          
+          newCell:{
+            id: response.id,
+            day: "Monday",
+            time_of_day: "Morning"
+          }}, function(){
+            this.props.AddMonCell(this.state.newCell)
+          });
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.log(err);
+        }
+      });
+    }
+
+    onAddCellTuesday(){
+      var parameters = {
+        day: "Tuesday",
         time_of_day: "Morning"
       };
 
@@ -27,11 +56,10 @@ export class AddMorning extends React.Component {
           this.setState({          
           newCell:{
             id: response.id,
-            day: "Monday",
+            day: "Tuesday",
             time_of_day: "Morning"
           }}, function(){
-            this.props.AddCell(this.state.newCell)
-
+            this.props.AddTuesCell(this.state.newCell)
           });
         }.bind(this),
         error: function(xhr, status, err){
@@ -39,6 +67,7 @@ export class AddMorning extends React.Component {
         }
       });
     }
+
 
     onDeleteCellMonday(id){
       this.props.DeleteCell(id)
@@ -49,7 +78,7 @@ export class AddMorning extends React.Component {
         dataType: 'json',
         cache: false,
         success: function(data){
-          console.log(data)
+          // console.log(data)
         }.bind(this),
         error: function(xhr, status, err){
           console.log(err);

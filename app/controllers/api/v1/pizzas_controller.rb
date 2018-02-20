@@ -24,7 +24,11 @@ class Api::V1::PizzasController < ApplicationController
   end
 
   def show 
-    @pizza = Pizza.find_by(id: params[:id])
+    if params[:time_of_day] == 'Morning' && params[:day] ==  'Monday'
+      @pizza = Pizza.where(time_of_day:'Morning').where(day:"Monday")
+    elsif params[:time_of_day] == 'Morning' && params[:day] ==  'Tuesday'
+      @pizza = Pizza.where(time_of_day:'Morning').where(day:"Tuesday")
+    end
 
     render 'show.json.jbuilder'
   end

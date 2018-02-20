@@ -33,9 +33,15 @@ export default class Schedule extends React.Component {
     this.getPizza();
   }
 
-  handleAddMorningCell(cell){
+  handleAddMonMorningCell(cell){
     let pizza = this.state.Pizza    
     pizza.Morning.Monday.push(cell)
+    this.setState({Pizza:pizza})
+  }
+
+  handleAddTuesMorningCell(cell){
+    let pizza = this.state.Pizza    
+    pizza.Morning.Tuesday.push(cell)
     this.setState({Pizza:pizza})
   }
 
@@ -52,7 +58,7 @@ export default class Schedule extends React.Component {
         <h2>Pizza Schedule</h2>
           <table className="table table-bordered">
              
-            <AddMorning pizzaMorning={this.state.Pizza} DeleteCell={this.handleDeleteMorningCell.bind(this)} AddCell={this.handleAddMorningCell.bind(this)} />
+            <AddMorning pizzaMorning={this.state.Pizza} DeleteCell={this.handleDeleteMorningCell.bind(this)} AddMonCell={this.handleAddMonMorningCell.bind(this)} AddTuesCell={this.handleAddTuesMorningCell.bind(this)} />
             <AddAfternoon pizzaAfternoon={this.state.Pizza} />
 
         </table>
