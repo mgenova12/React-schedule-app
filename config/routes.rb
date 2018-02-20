@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get '/pizza' => 'pizzas#index'
       post '/pizza' => 'pizzas#create'
       get '/pizza/:id' => 'pizzas#show'
+      delete '/pizza/:id' => 'pizzas#destroy'
     end
   end
 

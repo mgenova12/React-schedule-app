@@ -11,7 +11,6 @@ export class AddMorning extends React.Component {
     }
 
     onAddCellMonday(){
-      var countId = 21;
       var parameters = {
         id: uuidv4(),
         day: "Monday",
@@ -32,19 +31,30 @@ export class AddMorning extends React.Component {
             time_of_day: "Morning"
           }}, function(){
             this.props.AddCell(this.state.newCell)
+
           });
         }.bind(this),
         error: function(xhr, status, err){
           console.log(err);
         }
       });
-
     }
 
-
     onDeleteCellMonday(id){
+      this.props.DeleteCell(id)
 
-
+      $.ajax({
+        type: 'DELETE',
+        url: '/api/v1/pizza/' + id,
+        dataType: 'json',
+        cache: false,
+        success: function(data){
+          console.log(data)
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.log(err);
+        }
+      });
     }
 
   render() {
@@ -58,7 +68,7 @@ export class AddMorning extends React.Component {
     if(this.props.pizzaMorning){
       monMorning = this.props.pizzaMorning.Morning.Monday.map(Mon => {
         return (
-          <tr key={Mon.id}><td><div>Name: {Mon.name} <br/>Time: {Mon.time}</div><button onClick={this.onDeleteCellMonday}>Delete</button></td></tr>
+          <tr key={Mon.id}><td><div>Name: {Mon.name} <br/>Time: {Mon.time}</div><button onClick={this.onDeleteCellMonday.bind(this, Mon.id)}>Delete</button></td></tr>
         );
       })
 

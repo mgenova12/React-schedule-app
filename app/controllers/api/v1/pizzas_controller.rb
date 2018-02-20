@@ -37,6 +37,12 @@ class Api::V1::PizzasController < ApplicationController
     )
 
     render 'show.json.jbuilder'
+  end
+
+  def destroy
+    pizza = Pizza.find_by(id: params[:id])
+
+    pizza.destroy
 
   end
 

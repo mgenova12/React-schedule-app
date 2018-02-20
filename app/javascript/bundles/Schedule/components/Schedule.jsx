@@ -39,13 +39,20 @@ export default class Schedule extends React.Component {
     this.setState({Pizza:pizza})
   }
 
+  handleDeleteMorningCell(id){
+    let pizza = this.state.Pizza;
+    let index = pizza.Morning.Monday.findIndex(x => x.id === id)
+    pizza.Morning.Monday.splice(index,1)
+    this.setState({Pizza:pizza})
+  }
+
   render(){
     return(
       <div>
         <h2>Pizza Schedule</h2>
           <table className="table table-bordered">
              
-            <AddMorning pizzaMorning={this.state.Pizza} AddCell={this.handleAddMorningCell.bind(this)} />
+            <AddMorning pizzaMorning={this.state.Pizza} DeleteCell={this.handleDeleteMorningCell.bind(this)} AddCell={this.handleAddMorningCell.bind(this)} />
             <AddAfternoon pizzaAfternoon={this.state.Pizza} />
 
         </table>
