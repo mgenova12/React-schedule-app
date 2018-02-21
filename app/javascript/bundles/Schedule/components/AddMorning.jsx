@@ -1,11 +1,11 @@
 import React from 'react'
+import {DeleteMorning} from './DeleteMorning'
 
 export class AddMorning extends React.Component {
     constructor(){
       super();
       this.state = {
         newCell:{}
-
       }
       this.onAddCellMonday = this.onAddCellMonday.bind(this);
       this.onAddCellTuesday = this.onAddCellTuesday.bind(this);
@@ -178,19 +178,22 @@ export class AddMorning extends React.Component {
     }
 
     onDeleteCellMonday(id){
-      this.props.DeleteCell(id)
-      $.ajax({
-        type: 'DELETE',
-        url: '/api/v1/pizza/' + id,
-        dataType: 'json',
-        cache: false,
-        success: function(data){
-          // console.log(data)
-        }.bind(this),
-        error: function(xhr, status, err){
-          console.log(err);
-        }
-      });
+      this.props.DeleteMonCell(id)
+    }    
+    onDeleteCellTuesday(id){
+      this.props.DeleteTuesCell(id)
+    }
+    onDeleteCellWednesday(id){
+      this.props.DeleteWedCell(id)
+    }
+    onDeleteCellThursday(id){
+      this.props.DeleteThursCell(id)
+    }
+    onDeleteCellFriday(id){
+      this.props.DeleteFriCell(id)
+    }
+    onDeleteCellSaturday(id){
+      this.props.DeleteSatCell(id)
     }
 
   render() {
@@ -204,37 +207,37 @@ export class AddMorning extends React.Component {
     if(this.props.pizzaMorning){
       monMorning = this.props.pizzaMorning.Morning.Monday.map(Mon => {
         return (
-          <tr key={Mon.id}><td><div>Name: {Mon.name} <br/>Time: {Mon.time}</div><button onClick={this.onDeleteCellMonday.bind(this, Mon.id)}>Delete</button></td></tr>
+          <tr key={Mon.id}><td><div>Name: {Mon.name} <br/>Time: {Mon.time}</div><DeleteMorning DeleteCell={this.onDeleteCellMonday.bind(this)} cell={Mon.id}/> </td></tr>
         );
       })
 
       tuesMorning = this.props.pizzaMorning.Morning.Tuesday.map(Tues => {
         return (
-          <tr key={Tues.id}><td><div>Name: {Tues.name} <br/>Time: {Tues.time}</div><button>Delete</button></td></tr>
+          <tr key={Tues.id}><td><div>Name: {Tues.name} <br/>Time: {Tues.time}</div><DeleteMorning DeleteCell={this.onDeleteCellTuesday.bind(this)} cell={Tues.id}/> </td></tr>
         );
       })  
 
       wedMorning = this.props.pizzaMorning.Morning.Wednesday.map(Wed => {
         return (
-          <tr key={Wed.id}><td><div>Name: {Wed.name} <br/>Time: {Wed.time}</div><button>Delete</button></td></tr>
+          <tr key={Wed.id}><td><div>Name: {Wed.name} <br/>Time: {Wed.time}</div><DeleteMorning DeleteCell={this.onDeleteCellWednesday.bind(this)} cell={Wed.id}/> </td></tr>
         );
       })
 
       thursMorning = this.props.pizzaMorning.Morning.Thursday.map(Thurs => {
         return (
-          <tr key={Thurs.id}><td><div>Name: {Thurs.name} <br/>Time: {Thurs.time}</div><button>Delete</button></td></tr>
+          <tr key={Thurs.id}><td><div>Name: {Thurs.name} <br/>Time: {Thurs.time}</div><DeleteMorning DeleteCell={this.onDeleteCellThursday.bind(this)} cell={Thurs.id}/></td></tr>
         );
       })
 
       friMorning = this.props.pizzaMorning.Morning.Friday.map(Fri => {
         return (
-          <tr key={Fri.id}><td><div>Name: {Fri.name} <br/>Time: {Fri.time}</div><button>Delete</button></td></tr>
+          <tr key={Fri.id}><td><div>Name: {Fri.name} <br/>Time: {Fri.time}</div><DeleteMorning DeleteCell={this.onDeleteCellFriday.bind(this)} cell={Fri.id}/> </td></tr>
         );
       })
 
       satMorning = this.props.pizzaMorning.Morning.Saturday.map(Sat => {
         return (
-          <tr key={Sat.id}><td><div>Name: {Sat.name} <br/>Time: {Sat.time}</div><button>Delete</button></td></tr>
+          <tr key={Sat.id}><td><div>Name: {Sat.name} <br/>Time: {Sat.time}</div><DeleteMorning DeleteCell={this.onDeleteCellSaturday.bind(this)} cell={Sat.id}/> </td></tr>
         );
       })                  
 
