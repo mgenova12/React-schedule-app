@@ -24,10 +24,20 @@ class Api::V1::PizzasController < ApplicationController
   end
 
   def show 
-    if params[:time_of_day] == 'Morning' && params[:day] ==  'Monday'
-      @pizza = Pizza.where(time_of_day:'Morning').where(day:"Monday")
-    elsif params[:time_of_day] == 'Morning' && params[:day] ==  'Tuesday'
-      @pizza = Pizza.where(time_of_day:'Morning').where(day:"Tuesday")
+    if params[:time_of_day] == 'Morning'
+      if params[:day] == 'Monday'
+        @pizza = Pizza.where(time_of_day:'Morning').where(day:"Monday")
+      elsif params[:day] == 'Tuesday'
+        @pizza = Pizza.where(time_of_day:'Morning').where(day:"Tuesday")
+      elsif params[:day] == 'Wednesday'
+        @pizza = Pizza.where(time_of_day:'Morning').where(day:"Wednesday")
+      elsif params[:day] == 'Thursday'
+        @pizza = Pizza.where(time_of_day:'Morning').where(day:"Thursday")
+      elsif params[:day] == 'Friday'
+        @pizza = Pizza.where(time_of_day:'Morning').where(day:"Friday")
+      elsif params[:day] == 'Saturday'
+        @pizza = Pizza.where(time_of_day:'Morning').where(day:"Saturday")
+      end
     end
 
     render 'show.json.jbuilder'
@@ -47,7 +57,6 @@ class Api::V1::PizzasController < ApplicationController
     pizza = Pizza.find_by(id: params[:id])
 
     pizza.destroy
-
   end
 
 end

@@ -9,6 +9,10 @@ export class AddMorning extends React.Component {
       }
       this.onAddCellMonday = this.onAddCellMonday.bind(this);
       this.onAddCellTuesday = this.onAddCellTuesday.bind(this);
+      this.onAddCellWednesday = this.onAddCellWednesday.bind(this);
+      this.onAddCellThursday = this.onAddCellThursday.bind(this);
+      this.onAddCellFriday = this.onAddCellFriday.bind(this);
+      this.onAddCellSaturday = this.onAddCellSaturday.bind(this);
     }
 
     onAddCellMonday(){
@@ -16,7 +20,6 @@ export class AddMorning extends React.Component {
         day: "Monday",
         time_of_day: "Morning"
       };
-
       $.ajax({
         type: 'POST',
         url: '/api/v1/pizza',
@@ -24,7 +27,6 @@ export class AddMorning extends React.Component {
         data: parameters,
         cache: false,
         success: function(response){
-          console.log(response)
           this.setState({          
           newCell:{
             id: response.id,
@@ -45,7 +47,6 @@ export class AddMorning extends React.Component {
         day: "Tuesday",
         time_of_day: "Morning"
       };
-
       $.ajax({
         type: 'POST',
         url: '/api/v1/pizza',
@@ -68,10 +69,116 @@ export class AddMorning extends React.Component {
       });
     }
 
+    onAddCellWednesday(){
+      var parameters = {
+        day: "Wednesday",
+        time_of_day: "Morning"
+      };
+      $.ajax({
+        type: 'POST',
+        url: '/api/v1/pizza',
+        dataType: 'json',
+        data: parameters,
+        cache: false,
+        success: function(response){
+          this.setState({          
+          newCell:{
+            id: response.id,
+            day: "Wednesday",
+            time_of_day: "Morning"
+          }}, function(){
+            this.props.AddWedCell(this.state.newCell)
+          });
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.log(err);
+        }
+      });
+    }
+
+    onAddCellThursday(){
+      var parameters = {
+        day: "Thursday",
+        time_of_day: "Morning"
+      };
+      $.ajax({
+        type: 'POST',
+        url: '/api/v1/pizza',
+        dataType: 'json',
+        data: parameters,
+        cache: false,
+        success: function(response){
+          this.setState({          
+          newCell:{
+            id: response.id,
+            day: "Thursday",
+            time_of_day: "Morning"
+          }}, function(){
+            this.props.AddThursCell(this.state.newCell)
+          });
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.log(err);
+        }
+      });
+    }
+
+    onAddCellFriday(){
+      var parameters = {
+        day: "Friday",
+        time_of_day: "Morning"
+      };
+      $.ajax({
+        type: 'POST',
+        url: '/api/v1/pizza',
+        dataType: 'json',
+        data: parameters,
+        cache: false,
+        success: function(response){
+          this.setState({          
+          newCell:{
+            id: response.id,
+            day: "Friday",
+            time_of_day: "Morning"
+          }}, function(){
+            this.props.AddFriCell(this.state.newCell)
+          });
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.log(err);
+        }
+      });
+    }
+
+    onAddCellSaturday(){
+      var parameters = {
+        day: "Saturday",
+        time_of_day: "Morning"
+      };
+      $.ajax({
+        type: 'POST',
+        url: '/api/v1/pizza',
+        dataType: 'json',
+        data: parameters,
+        cache: false,
+        success: function(response){
+          this.setState({          
+          newCell:{
+            id: response.id,
+            day: "Saturday",
+            time_of_day: "Morning"
+          }}, function(){
+            this.props.AddSatCell(this.state.newCell)
+          });
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.log(err);
+        }
+      });
+    }
 
     onDeleteCellMonday(id){
       this.props.DeleteCell(id)
-
       $.ajax({
         type: 'DELETE',
         url: '/api/v1/pizza/' + id,
