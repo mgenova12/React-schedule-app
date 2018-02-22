@@ -1,5 +1,6 @@
 import React from 'react'
 import {DeleteMorning} from './DeleteMorning'
+import {MorningOptions} from './MorningOptions'
 
 export class AddMorning extends React.Component {
     constructor(){
@@ -207,7 +208,7 @@ export class AddMorning extends React.Component {
     if(this.props.pizzaMorning){
       monMorning = this.props.pizzaMorning.Morning.Monday.map(Mon => {
         return (
-          <tr key={Mon.id}><td><div>Name: {Mon.name} <br/>Time: {Mon.time}</div><DeleteMorning DeleteCell={this.onDeleteCellMonday.bind(this)} cell={Mon.id}/> </td></tr>
+          <tr key={Mon.id}><td><MorningOptions pizza={this.props.pizzaMorning}/><DeleteMorning DeleteCell={this.onDeleteCellMonday.bind(this)} cell={Mon.id}/> </td></tr>
         );
       })
 
