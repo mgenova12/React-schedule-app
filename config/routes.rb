@@ -8,6 +8,12 @@ Rails.application.routes.draw do
       post '/pizza' => 'pizzas#create'
       get '/pizza/:id' => 'pizzas#show'
       delete '/pizza/:id' => 'pizzas#destroy'
+
+      get '/employees' => 'employees#index'
+      
+      get '/hours' => 'hours#index'
+
+
     end
   end
 
