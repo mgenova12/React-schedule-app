@@ -34,7 +34,6 @@ export default class Schedule extends React.Component {
   }
 //ADD MORNINGS------------------------
   handleAddMonMorningCell(cell){
-    console.log(cell);
     let pizza = this.state.Pizza    
     pizza.Morning.Monday.push(cell)
     this.setState({Pizza:pizza})

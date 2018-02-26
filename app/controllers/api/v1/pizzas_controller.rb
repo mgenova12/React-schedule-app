@@ -53,6 +53,14 @@ class Api::V1::PizzasController < ApplicationController
     render 'show.json.jbuilder'
   end
 
+  def update
+    pizza = Pizza.find_by(id: params[:id])
+    
+    
+    
+  end
+
+
   def destroy
     pizza = Pizza.find_by(id: params[:id])
 

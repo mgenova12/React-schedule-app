@@ -42,6 +42,17 @@ export class MorningOptions extends React.Component {
     });
   }
 
+  updateSelectName(id, event){
+    console.log(event.target.value)
+    console.log(id)
+  }
+
+  updateSelectTime(id, event){
+    console.log(event.target.value)
+    console.log(id)
+  }
+
+
   componentDidMount(){
     this.getNames();
     this.getTimes();
@@ -58,12 +69,12 @@ export class MorningOptions extends React.Component {
 
     return(
       <div> 
-        <select ref="name" >
+        <select onChange={this.updateSelectName.bind(this, this.props.cellId)} ref="name" >
           <option>--</option>
           {nameOptions}
         </select>
         <br/>
-        <select ref="time" >
+        <select onChange={this.updateSelectTime.bind(this, this.props.cellId)} ref="time" >
           <option>--</option>        
           {timeOptions}
         </select>

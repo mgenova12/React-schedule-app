@@ -208,37 +208,37 @@ export class AddMorning extends React.Component {
     if(this.props.pizzaMorning){
       monMorning = this.props.pizzaMorning.Morning.Monday.map(Mon => {
         return (
-          <tr key={Mon.id}><td><MorningOptions/><DeleteMorning DeleteCell={this.onDeleteCellMonday.bind(this)} cell={Mon.id}/> </td></tr>
+          <tr key={Mon.id}><td><MorningOptions cellId={Mon.id}/><DeleteMorning DeleteCell={this.onDeleteCellMonday.bind(this)} cell={Mon.id}/> </td></tr>
         );
       })
 
       tuesMorning = this.props.pizzaMorning.Morning.Tuesday.map(Tues => {
         return (
-          <tr key={Tues.id}><td><MorningOptions/><div>Name: {Tues.name} <br/>Time: {Tues.time}</div><DeleteMorning DeleteCell={this.onDeleteCellTuesday.bind(this)} cell={Tues.id}/> </td></tr>
+          <tr key={Tues.id}><td><MorningOptions cellId={Tues.id}/><DeleteMorning DeleteCell={this.onDeleteCellTuesday.bind(this)} cell={Tues.id}/> </td></tr>
         );
       })  
 
       wedMorning = this.props.pizzaMorning.Morning.Wednesday.map(Wed => {
         return (
-          <tr key={Wed.id}><td><MorningOptions/><div>Name: {Wed.name} <br/>Time: {Wed.time}</div><DeleteMorning DeleteCell={this.onDeleteCellWednesday.bind(this)} cell={Wed.id}/> </td></tr>
+          <tr key={Wed.id}><td><MorningOptions cellId={Wed.id}/><DeleteMorning DeleteCell={this.onDeleteCellWednesday.bind(this)} cell={Wed.id}/> </td></tr>
         );
       })
 
       thursMorning = this.props.pizzaMorning.Morning.Thursday.map(Thurs => {
         return (
-          <tr key={Thurs.id}><td><MorningOptions/><div>Name: {Thurs.name} <br/>Time: {Thurs.time}</div><DeleteMorning DeleteCell={this.onDeleteCellThursday.bind(this)} cell={Thurs.id}/></td></tr>
+          <tr key={Thurs.id}><td><MorningOptions cellId={Thurs.id}/><DeleteMorning DeleteCell={this.onDeleteCellThursday.bind(this)} cell={Thurs.id}/></td></tr>
         );
       })
 
       friMorning = this.props.pizzaMorning.Morning.Friday.map(Fri => {
         return (
-          <tr key={Fri.id}><td><MorningOptions/><div>Name: {Fri.name} <br/>Time: {Fri.time}</div><DeleteMorning DeleteCell={this.onDeleteCellFriday.bind(this)} cell={Fri.id}/> </td></tr>
+          <tr key={Fri.id}><td><MorningOptions cellId={Fri.id}/><DeleteMorning DeleteCell={this.onDeleteCellFriday.bind(this)} cell={Fri.id}/> </td></tr>
         );
       })
 
       satMorning = this.props.pizzaMorning.Morning.Saturday.map(Sat => {
         return (
-          <tr key={Sat.id}><td><MorningOptions/><div>Name: {Sat.name} <br/>Time: {Sat.time}</div><DeleteMorning DeleteCell={this.onDeleteCellSaturday.bind(this)} cell={Sat.id}/> </td></tr>
+          <tr key={Sat.id}><td><MorningOptions cellId={Sat.id}/><DeleteMorning DeleteCell={this.onDeleteCellSaturday.bind(this)} cell={Sat.id}/> </td></tr>
         );
       })                  
 
