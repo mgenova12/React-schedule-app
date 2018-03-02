@@ -6,7 +6,9 @@ export class AddMorning extends React.Component {
     constructor(){
       super();
       this.state = {
-        newCell:{}
+        newCell:{},
+        names:[],
+        times:[]
       }
       this.onAddCellMonday = this.onAddCellMonday.bind(this);
       this.onAddCellTuesday = this.onAddCellTuesday.bind(this);
@@ -14,6 +16,9 @@ export class AddMorning extends React.Component {
       this.onAddCellThursday = this.onAddCellThursday.bind(this);
       this.onAddCellFriday = this.onAddCellFriday.bind(this);
       this.onAddCellSaturday = this.onAddCellSaturday.bind(this);
+
+      this.getNames = this.getNames.bind(this);
+      this.getTimes = this.getTimes.bind(this);
     }
 
     onAddCellMonday(){
@@ -197,6 +202,43 @@ export class AddMorning extends React.Component {
       this.props.DeleteSatCell(id)
     }
 
+    getNames(){
+      $.ajax({
+        url: '/api/v1/employees',
+        dataType: 'json',
+        cache: false,
+        success: function(data){
+          this.setState({names: data}, function(){
+            console.log(this.state.names);
+          });
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.log(err);
+        }
+      });
+    }
+
+    getTimes(){
+      $.ajax({
+        url: '/api/v1/hours',
+        dataType: 'json',
+        cache: false,
+        success: function(data){
+          this.setState({times: data}, function(){
+
+          });
+        }.bind(this),
+        error: function(xhr, status, err){
+          console.log(err);
+        }
+      });
+    }
+
+  componentDidMount(){
+    this.getNames();
+    this.getTimes();
+  }
+
   render() {
     let monMorning;
     let tuesMorning;
@@ -205,40 +247,48 @@ export class AddMorning extends React.Component {
     let friMorning;
     let satMorning;
 
+    let nameOptions = this.state.names.map(ele => {
+      return <option key={ele.name} value={ele.name}> {ele.name}</option>
+    }) 
+
+    let timeOptions = this.state.times.map(ele => {
+      return <option key={ele.time} value={ele.time}> {ele.time}</option>
+    })
+
     if(this.props.pizzaMorning){
       monMorning = this.props.pizzaMorning.Morning.Monday.map(Mon => {
         return (
-          <tr key={Mon.id}><td><MorningOptions cellId={Mon.id}/><DeleteMorning DeleteCell={this.onDeleteCellMonday.bind(this)} cell={Mon.id}/> </td></tr>
+          <tr key={Mon.id}><td><MorningOptions cellId={Mon.id} time={Mon.hour_id ? this.state.times[Mon.hour_id-1].time : ""} timeOptions={timeOptions} nameOptions={nameOptions} name={Mon.employee_id ? this.state.names[Mon.employee_id-1].name : ""}/><DeleteMorning DeleteCell={this.onDeleteCellMonday.bind(this)} cell={Mon.id}/> </td></tr>
         );
       })
 
       tuesMorning = this.props.pizzaMorning.Morning.Tuesday.map(Tues => {
         return (
-          <tr key={Tues.id}><td><MorningOptions cellId={Tues.id}/><DeleteMorning DeleteCell={this.onDeleteCellTuesday.bind(this)} cell={Tues.id}/> </td></tr>
+          <tr key={Tues.id}><td><MorningOptions cellId={Tues.id} time={Tues.hour_id ? this.state.times[Tues.hour_id-1].time : ""} timeOptions={timeOptions} nameOptions={nameOptions} name={Tues.employee_id ? this.state.names[Tues.employee_id-1].name : ""}/><DeleteMorning DeleteCell={this.onDeleteCellTuesday.bind(this)} cell={Tues.id}/> </td></tr>
         );
       })  
 
       wedMorning = this.props.pizzaMorning.Morning.Wednesday.map(Wed => {
         return (
-          <tr key={Wed.id}><td><MorningOptions cellId={Wed.id}/><DeleteMorning DeleteCell={this.onDeleteCellWednesday.bind(this)} cell={Wed.id}/> </td></tr>
+          <tr key={Wed.id}><td><MorningOptions cellId={Wed.id} time={Wed.hour_id ? this.state.times[Wed.hour_id-1].time : ""} timeOptions={timeOptions} nameOptions={nameOptions} name={Wed.employee_id ? this.state.names[Wed.employee_id-1].name : ""}/><DeleteMorning DeleteCell={this.onDeleteCellWednesday.bind(this)} cell={Wed.id}/> </td></tr>
         );
       })
 
       thursMorning = this.props.pizzaMorning.Morning.Thursday.map(Thurs => {
         return (
-          <tr key={Thurs.id}><td><MorningOptions cellId={Thurs.id}/><DeleteMorning DeleteCell={this.onDeleteCellThursday.bind(this)} cell={Thurs.id}/></td></tr>
+          <tr key={Thurs.id}><td><MorningOptions cellId={Thurs.id} time={Thurs.hour_id ? this.state.times[Thurs.hour_id-1].time : ""} timeOptions={timeOptions} nameOptions={nameOptions} name={Thurs.employee_id ? this.state.names[Thurs.employee_id-1].name : ""}/><DeleteMorning DeleteCell={this.onDeleteCellThursday.bind(this)} cell={Thurs.id}/></td></tr>
         );
       })
 
       friMorning = this.props.pizzaMorning.Morning.Friday.map(Fri => {
         return (
-          <tr key={Fri.id}><td><MorningOptions cellId={Fri.id}/><DeleteMorning DeleteCell={this.onDeleteCellFriday.bind(this)} cell={Fri.id}/> </td></tr>
+          <tr key={Fri.id}><td><MorningOptions cellId={Fri.id} time={Fri.hour_id ? this.state.times[Fri.hour_id-1].time : ""} timeOptions={timeOptions} nameOptions={nameOptions} name={Fri.employee_id ? this.state.names[Fri.employee_id-1].name : ""}/><DeleteMorning DeleteCell={this.onDeleteCellFriday.bind(this)} cell={Fri.id}/> </td></tr>
         );
       })
 
       satMorning = this.props.pizzaMorning.Morning.Saturday.map(Sat => {
         return (
-          <tr key={Sat.id}><td><MorningOptions cellId={Sat.id}/><DeleteMorning DeleteCell={this.onDeleteCellSaturday.bind(this)} cell={Sat.id}/> </td></tr>
+          <tr key={Sat.id}><td><MorningOptions cellId={Sat.id} time={Sat.hour_id ? this.state.times[Sat.hour_id-1].time : ""} timeOptions={timeOptions} nameOptions={nameOptions} name={Sat.employee_id ? this.state.names[Sat.employee_id-1].name : ""}/><DeleteMorning DeleteCell={this.onDeleteCellSaturday.bind(this)} cell={Sat.id}/> </td></tr>
         );
       })                  
 

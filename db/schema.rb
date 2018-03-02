@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226225708) do
+ActiveRecord::Schema.define(version: 20180227025859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20180226225708) do
     t.string   "time_of_day"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "hour_id"
-    t.string   "employee_id"
+    t.integer  "hour_id"
+    t.integer  "employee_id"
   end
 
 end

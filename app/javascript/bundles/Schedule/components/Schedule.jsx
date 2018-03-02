@@ -3,7 +3,6 @@ import React from 'react';
 import {AddAfternoon} from './AddAfternoon'
 import {AddMorning} from './AddMorning'
 
-
 export default class Schedule extends React.Component {
 
   constructor(props) {

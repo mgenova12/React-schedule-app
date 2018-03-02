@@ -9,7 +9,7 @@
 # Pizza.destroy_all
 
 # 15.times do 
-#   Pizza.create(day:['Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday' ].sample ,time_of_day:['Morning', 'Afternoon'].sample, name_id:(1..8).to_a.sample, time_id: (1..7).to_a.sample)
+#   Pizza.create(day:['Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday' ].sample ,time_of_day:['Morning', 'Afternoon'].sample, employee_id:(1..8).to_a.sample, hour_id: (1..7).to_a.sample)
 # end
 
   # Employee.create(name:'Rudy')
