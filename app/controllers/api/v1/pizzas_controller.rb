@@ -55,9 +55,17 @@ class Api::V1::PizzasController < ApplicationController
 
   def update
     pizza = Pizza.find_by(id: params[:id])
-    
-    
-    
+
+    if params[:employeeId] 
+      pizza.update(
+        employee_id: params[:employeeId]
+      )
+    else 
+      pizza.update(
+        hour_id: params[:hourId]
+      )
+    end
+
   end
 
 

@@ -209,7 +209,7 @@ export class AddMorning extends React.Component {
         cache: false,
         success: function(data){
           this.setState({names: data}, function(){
-            console.log(this.state.names);
+
           });
         }.bind(this),
         error: function(xhr, status, err){
@@ -248,11 +248,11 @@ export class AddMorning extends React.Component {
     let satMorning;
 
     let nameOptions = this.state.names.map(ele => {
-      return <option key={ele.name} value={ele.name}> {ele.name}</option>
+      return <option key={ele.id} value={ele.name}> {ele.name}</option>
     }) 
 
     let timeOptions = this.state.times.map(ele => {
-      return <option key={ele.time} value={ele.time}> {ele.time}</option>
+      return <option key={ele.id} value={ele.time}> {ele.time}</option>
     })
 
     if(this.props.pizzaMorning){

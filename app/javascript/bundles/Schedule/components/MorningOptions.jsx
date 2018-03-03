@@ -2,37 +2,65 @@ import React from 'react'
 
 export class MorningOptions extends React.Component {
   
-  constructor(props) {
-    super(props);
-    this.state = { 
-      names: [],
-      times: []
-    };
-    
-  }  
-
-
   updateSelectName(id, event){
-    console.log(event.target.value)
-    console.log(id)
-    // $.ajax({
-    //   type: 'PATCH',
-    //   url: '/api/v1/',
-    //   dataType: 'json',
-    //   cache: false,
-    //   success: function(data){
+    let employeeId;
 
+    this.props.nameOptions.map(ele => {
+      if(ele.props.value === event.target.value){
+        employeeId = ele.key;
+      }
+    })
 
-    //   }.bind(this),
-    //   error: function(xhr, status, err){
-    //     console.log(err);
-    //   }
-    // });
+    var parameters = {
+      id: id,
+      employeeId: employeeId
+    };
+
+    $.ajax({
+      type: 'PATCH',
+      url: '/api/v1/pizza/' + id,
+      dataType: 'json',
+      data: parameters,
+      cache: false,
+      success: function(data){
+
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.log(err);
+      }
+    });
   }
 
   updateSelectTime(id, event){
-    console.log(event.target.value)
-    console.log(id)
+
+    let hourId;
+
+    this.props.timeOptions.map(ele => {
+      if(ele.props.value === event.target.value){
+        hourId = ele.key;
+      }
+    })
+
+    var parameters = {
+      id: id,
+      hourId: hourId
+    };
+
+    $.ajax({
+      type: 'PATCH',
+      url: '/api/v1/pizza/' + id,
+      dataType: 'json',
+      data: parameters,
+      cache: false,
+      success: function(data){
+        console.log(data);
+
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.log(err);
+      }
+    });
+
   }
 
 
