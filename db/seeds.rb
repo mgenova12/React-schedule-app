@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Pizza.destroy_all
+Pizza.destroy_all
 
-# 15.times do 
-#   Pizza.create(day:['Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday' ].sample ,time_of_day:['Morning', 'Afternoon'].sample, employee_id:(1..8).to_a.sample, hour_id: (1..7).to_a.sample)
-# end
+15.times do 
+  Pizza.create(day:['Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday' ].sample ,time_of_day:['Morning', 'Afternoon'].sample, employee_id:(1..8).to_a.sample, hour_id: (8..14).to_a.sample)
+end
 
   # Employee.create(name:'Rudy')
   # Employee.create(name:'Tony')
@@ -21,12 +21,12 @@
   # Employee.create(name:'Anthony')
   # Employee.create(name:'Brenda')
 
-  # Hour.create(time:'10:30-3')
-  # Hour.create(time:'11-4')
-  # Hour.create(time:'10-2')
-  # Hour.create(time:'3-10')
-  # Hour.create(time:'4-close')
-  # Hour.create(time:'5-close')
-  # Hour.create(time:'4-9')
+  Hour.create!(time:'10:30-3', am_pm: 'AM')
+  # Hour.create!(time:'11-4',am_pm: 'AM')
+  # Hour.create!(time:'10-2', am_pm: 'AM')
+  # Hour.create!(time:'3-10', am_pm: 'PM')
+  # Hour.create!(time:'4-close', am_pm: 'PM')
+  # Hour.create!(time:'5-close', am_pm: 'PM')
+  # Hour.create!(time:'4-9', am_pm: 'PM')
 
 

@@ -64,7 +64,6 @@ export class MorningOptions extends React.Component {
 
 
   render(){  
-
     return(
       <div> 
         <select defaultValue={this.props.name} onChange={this.updateSelectName.bind(this, this.props.cellId)} >

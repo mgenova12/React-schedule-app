@@ -14,7 +14,6 @@ Rails.application.routes.draw do
       
       get '/hours' => 'hours#index'
 
-
     end
   end
 
