@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class MorningOptions extends React.Component {
+export class AfternoonOptions extends React.Component {
   
   updateSelectName(id, event){
     let employeeId;

@@ -62,6 +62,38 @@ export default class Schedule extends React.Component {
     pizza.Morning.Saturday.push(cell)
     this.setState({Pizza:pizza})
   }
+//ADD AFTERNOONS------------------------
+  handleAddMonAfternoonCell(cell){
+    let pizza = this.state.Pizza    
+    pizza.Afternoon.Monday.push(cell)
+    this.setState({Pizza:pizza})
+  }
+  handleAddTuesAfternoonCell(cell){
+    let pizza = this.state.Pizza    
+    pizza.Afternoon.Tuesday.push(cell)
+    this.setState({Pizza:pizza})
+  }
+  handleAddWedAfternoonCell(cell){
+    let pizza = this.state.Pizza    
+    pizza.Afternoon.Wednesday.push(cell)
+    this.setState({Pizza:pizza})
+  }
+  handleAddThursAfternoonCell(cell){
+    let pizza = this.state.Pizza    
+    pizza.Afternoon.Thursday.push(cell)
+    this.setState({Pizza:pizza})
+  }
+  handleAddFriAfternoonCell(cell){
+    let pizza = this.state.Pizza    
+    pizza.Afternoon.Friday.push(cell)
+    this.setState({Pizza:pizza})
+  }
+  handleAddSatAfternoonCell(cell){
+    let pizza = this.state.Pizza    
+    pizza.Afternoon.Saturday.push(cell)
+    this.setState({Pizza:pizza})
+  }
+
 //DELETE MORNINGS------------------------
   handleDeleteMonMorningCell(id){
     let pizza = this.state.Pizza;
@@ -100,6 +132,44 @@ export default class Schedule extends React.Component {
     this.setState({Pizza:pizza})
   }
 
+  //DELETE AFTERNOONS------------------------
+  handleDeleteMonAfternoonCell(id){
+    let pizza = this.state.Pizza;
+    let index = pizza.Afternoon.Monday.findIndex(x => x.id === id)
+    pizza.Afternoon.Monday.splice(index,1)
+    this.setState({Pizza:pizza})
+  }  
+  handleDeleteTuesAfternoonCell(id){
+    let pizza = this.state.Pizza;
+    let index = pizza.Afternoon.Tuesday.findIndex(x => x.id === id)
+    pizza.Afternoon.Tuesday.splice(index,1)
+    this.setState({Pizza:pizza})
+  }
+  handleDeleteWedAfternoonCell(id){
+    let pizza = this.state.Pizza;
+    let index = pizza.Afternoon.Wednesday.findIndex(x => x.id === id)
+    pizza.Afternoon.Wednesday.splice(index,1)
+    this.setState({Pizza:pizza})
+  }
+  handleDeleteThursAfternoonCell(id){
+    let pizza = this.state.Pizza;
+    let index = pizza.Afternoon.Thursday.findIndex(x => x.id === id)
+    pizza.Afternoon.Thursday.splice(index,1)
+    this.setState({Pizza:pizza})
+  }
+  handleDeleteFriAfternoonCell(id){
+    let pizza = this.state.Pizza;
+    let index = pizza.Afternoon.Friday.findIndex(x => x.id === id)
+    pizza.Afternoon.Friday.splice(index,1)
+    this.setState({Pizza:pizza})
+  }
+  handleDeleteSatAfternoonCell(id){
+    let pizza = this.state.Pizza;
+    let index = pizza.Afternoon.Saturday.findIndex(x => x.id === id)
+    pizza.Afternoon.Saturday.splice(index,1)
+    this.setState({Pizza:pizza})
+  }
+
   render(){
     return(
       <div>
@@ -123,7 +193,21 @@ export default class Schedule extends React.Component {
               DeleteSatCell={this.handleDeleteSatMorningCell.bind(this)} 
             />
             
-            <AddAfternoon pizzaAfternoon={this.state.Pizza} />
+            <AddAfternoon pizzaAfternoon={this.state.Pizza} 
+              AddMonCell={this.handleAddMonAfternoonCell.bind(this)} 
+              AddTuesCell={this.handleAddTuesAfternoonCell.bind(this)} 
+              AddWedCell={this.handleAddWedAfternoonCell.bind(this)} 
+              AddThursCell={this.handleAddThursAfternoonCell.bind(this)} 
+              AddFriCell={this.handleAddFriAfternoonCell.bind(this)} 
+              AddSatCell={this.handleAddSatAfternoonCell.bind(this)} 
+
+              DeleteMonCell={this.handleDeleteMonAfternoonCell.bind(this)} 
+              DeleteTuesCell={this.handleDeleteTuesAfternoonCell.bind(this)} 
+              DeleteWedCell={this.handleDeleteWedAfternoonCell.bind(this)} 
+              DeleteThursCell={this.handleDeleteThursAfternoonCell.bind(this)} 
+              DeleteFriCell={this.handleDeleteFriAfternoonCell.bind(this)} 
+              DeleteSatCell={this.handleDeleteSatAfternoonCell.bind(this)} 
+            />
 
         </table>
       </div>
