@@ -39,7 +39,7 @@ export class AddMorning extends React.Component {
             day: "Monday",
             time_of_day: "Morning"
           }}, function(){
-            this.props.AddMonCell(this.state.newCell)
+            this.props.AddMorningCell(this.state.newCell, this.state.newCell.day)
           });
         }.bind(this),
         error: function(xhr, status, err){
@@ -66,7 +66,7 @@ export class AddMorning extends React.Component {
             day: "Tuesday",
             time_of_day: "Morning"
           }}, function(){
-            this.props.AddTuesCell(this.state.newCell)
+            this.props.AddMorningCell(this.state.newCell, this.state.newCell.day)
           });
         }.bind(this),
         error: function(xhr, status, err){
@@ -93,7 +93,7 @@ export class AddMorning extends React.Component {
             day: "Wednesday",
             time_of_day: "Morning"
           }}, function(){
-            this.props.AddWedCell(this.state.newCell)
+            this.props.AddMorningCell(this.state.newCell, this.state.newCell.day)
           });
         }.bind(this),
         error: function(xhr, status, err){
@@ -120,7 +120,7 @@ export class AddMorning extends React.Component {
             day: "Thursday",
             time_of_day: "Morning"
           }}, function(){
-            this.props.AddThursCell(this.state.newCell)
+            this.props.AddMorningCell(this.state.newCell, this.state.newCell.day)
           });
         }.bind(this),
         error: function(xhr, status, err){
@@ -147,7 +147,7 @@ export class AddMorning extends React.Component {
             day: "Friday",
             time_of_day: "Morning"
           }}, function(){
-            this.props.AddFriCell(this.state.newCell)
+            this.props.AddMorningCell(this.state.newCell, this.state.newCell.day)
           });
         }.bind(this),
         error: function(xhr, status, err){
@@ -174,7 +174,7 @@ export class AddMorning extends React.Component {
             day: "Saturday",
             time_of_day: "Morning"
           }}, function(){
-            this.props.AddSatCell(this.state.newCell)
+            this.props.AddMorningCell(this.state.newCell, this.state.newCell.day)
           });
         }.bind(this),
         error: function(xhr, status, err){

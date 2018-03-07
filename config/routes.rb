@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get '/hours/new' => 'hours#new'
   post '/hours' => 'hours#create'
 
+  get '/employees/new' => 'employees#new'
+  post '/employees' => 'employees#create'
+
   get '/' => 'schedules#index'
 
 

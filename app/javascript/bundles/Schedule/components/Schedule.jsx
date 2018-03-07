@@ -32,65 +32,16 @@ export default class Schedule extends React.Component {
     this.getPizza();
   }
 //ADD MORNINGS------------------------
-  handleAddMonMorningCell(cell){
+  handleAddMorningCell(cell, day){
     let pizza = this.state.Pizza    
-    pizza.Morning.Monday.push(cell)
+    pizza.Morning[day].push(cell)
     this.setState({Pizza:pizza})
   }
-  handleAddTuesMorningCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Morning.Tuesday.push(cell)
-    this.setState({Pizza:pizza})
-  }
-  handleAddWedMorningCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Morning.Wednesday.push(cell)
-    this.setState({Pizza:pizza})
-  }
-  handleAddThursMorningCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Morning.Thursday.push(cell)
-    this.setState({Pizza:pizza})
-  }
-  handleAddFriMorningCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Morning.Friday.push(cell)
-    this.setState({Pizza:pizza})
-  }
-  handleAddSatMorningCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Morning.Saturday.push(cell)
-    this.setState({Pizza:pizza})
-  }
+
 //ADD AFTERNOONS------------------------
-  handleAddMonAfternoonCell(cell){
+  handleAddAfternoonCell(cell, day){
     let pizza = this.state.Pizza    
-    pizza.Afternoon.Monday.push(cell)
-    this.setState({Pizza:pizza})
-  }
-  handleAddTuesAfternoonCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Afternoon.Tuesday.push(cell)
-    this.setState({Pizza:pizza})
-  }
-  handleAddWedAfternoonCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Afternoon.Wednesday.push(cell)
-    this.setState({Pizza:pizza})
-  }
-  handleAddThursAfternoonCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Afternoon.Thursday.push(cell)
-    this.setState({Pizza:pizza})
-  }
-  handleAddFriAfternoonCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Afternoon.Friday.push(cell)
-    this.setState({Pizza:pizza})
-  }
-  handleAddSatAfternoonCell(cell){
-    let pizza = this.state.Pizza    
-    pizza.Afternoon.Saturday.push(cell)
+    pizza.Afternoon[day].push(cell)
     this.setState({Pizza:pizza})
   }
 
@@ -178,12 +129,7 @@ export default class Schedule extends React.Component {
              
             <AddMorning 
               pizzaMorning={this.state.Pizza} 
-              AddMonCell={this.handleAddMonMorningCell.bind(this)} 
-              AddTuesCell={this.handleAddTuesMorningCell.bind(this)} 
-              AddWedCell={this.handleAddWedMorningCell.bind(this)} 
-              AddThursCell={this.handleAddThursMorningCell.bind(this)} 
-              AddFriCell={this.handleAddFriMorningCell.bind(this)} 
-              AddSatCell={this.handleAddSatMorningCell.bind(this)} 
+              AddMorningCell={this.handleAddMorningCell.bind(this)} 
               
               DeleteMonCell={this.handleDeleteMonMorningCell.bind(this)} 
               DeleteTuesCell={this.handleDeleteTuesMorningCell.bind(this)} 
@@ -193,13 +139,9 @@ export default class Schedule extends React.Component {
               DeleteSatCell={this.handleDeleteSatMorningCell.bind(this)} 
             />
             
-            <AddAfternoon pizzaAfternoon={this.state.Pizza} 
-              AddMonCell={this.handleAddMonAfternoonCell.bind(this)} 
-              AddTuesCell={this.handleAddTuesAfternoonCell.bind(this)} 
-              AddWedCell={this.handleAddWedAfternoonCell.bind(this)} 
-              AddThursCell={this.handleAddThursAfternoonCell.bind(this)} 
-              AddFriCell={this.handleAddFriAfternoonCell.bind(this)} 
-              AddSatCell={this.handleAddSatAfternoonCell.bind(this)} 
+            <AddAfternoon 
+              pizzaAfternoon={this.state.Pizza} 
+              AddAfternoonCell={this.handleAddAfternoonCell.bind(this)}
 
               DeleteMonCell={this.handleDeleteMonAfternoonCell.bind(this)} 
               DeleteTuesCell={this.handleDeleteTuesAfternoonCell.bind(this)} 
