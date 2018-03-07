@@ -46,78 +46,18 @@ export default class Schedule extends React.Component {
   }
 
 //DELETE MORNINGS------------------------
-  handleDeleteMonMorningCell(id){
+  handleDeleteMorningCell(id, day){
     let pizza = this.state.Pizza;
-    let index = pizza.Morning.Monday.findIndex(x => x.id === id)
-    pizza.Morning.Monday.splice(index,1)
+    let index = pizza.Morning[day].findIndex(x => x.id === id)
+    pizza.Morning[day].splice(index,1)
     this.setState({Pizza:pizza})
   }  
-  handleDeleteTuesMorningCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Morning.Tuesday.findIndex(x => x.id === id)
-    pizza.Morning.Tuesday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }
-  handleDeleteWedMorningCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Morning.Wednesday.findIndex(x => x.id === id)
-    pizza.Morning.Wednesday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }
-  handleDeleteThursMorningCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Morning.Thursday.findIndex(x => x.id === id)
-    pizza.Morning.Thursday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }
-  handleDeleteFriMorningCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Morning.Friday.findIndex(x => x.id === id)
-    pizza.Morning.Friday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }
-  handleDeleteSatMorningCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Morning.Saturday.findIndex(x => x.id === id)
-    pizza.Morning.Saturday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }
 
   //DELETE AFTERNOONS------------------------
-  handleDeleteMonAfternoonCell(id){
+  handleDeleteAfternoonCell(id, day){
     let pizza = this.state.Pizza;
-    let index = pizza.Afternoon.Monday.findIndex(x => x.id === id)
-    pizza.Afternoon.Monday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }  
-  handleDeleteTuesAfternoonCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Afternoon.Tuesday.findIndex(x => x.id === id)
-    pizza.Afternoon.Tuesday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }
-  handleDeleteWedAfternoonCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Afternoon.Wednesday.findIndex(x => x.id === id)
-    pizza.Afternoon.Wednesday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }
-  handleDeleteThursAfternoonCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Afternoon.Thursday.findIndex(x => x.id === id)
-    pizza.Afternoon.Thursday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }
-  handleDeleteFriAfternoonCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Afternoon.Friday.findIndex(x => x.id === id)
-    pizza.Afternoon.Friday.splice(index,1)
-    this.setState({Pizza:pizza})
-  }
-  handleDeleteSatAfternoonCell(id){
-    let pizza = this.state.Pizza;
-    let index = pizza.Afternoon.Saturday.findIndex(x => x.id === id)
-    pizza.Afternoon.Saturday.splice(index,1)
+    let index = pizza.Afternoon[day].findIndex(x => x.id === id)
+    pizza.Afternoon[day].splice(index,1)
     this.setState({Pizza:pizza})
   }
 
@@ -130,25 +70,13 @@ export default class Schedule extends React.Component {
             <AddMorning 
               pizzaMorning={this.state.Pizza} 
               AddMorningCell={this.handleAddMorningCell.bind(this)} 
-              
-              DeleteMonCell={this.handleDeleteMonMorningCell.bind(this)} 
-              DeleteTuesCell={this.handleDeleteTuesMorningCell.bind(this)} 
-              DeleteWedCell={this.handleDeleteWedMorningCell.bind(this)} 
-              DeleteThursCell={this.handleDeleteThursMorningCell.bind(this)} 
-              DeleteFriCell={this.handleDeleteFriMorningCell.bind(this)} 
-              DeleteSatCell={this.handleDeleteSatMorningCell.bind(this)} 
+              DeleteMorningCell={this.handleDeleteMorningCell.bind(this)}
             />
             
             <AddAfternoon 
               pizzaAfternoon={this.state.Pizza} 
               AddAfternoonCell={this.handleAddAfternoonCell.bind(this)}
-
-              DeleteMonCell={this.handleDeleteMonAfternoonCell.bind(this)} 
-              DeleteTuesCell={this.handleDeleteTuesAfternoonCell.bind(this)} 
-              DeleteWedCell={this.handleDeleteWedAfternoonCell.bind(this)} 
-              DeleteThursCell={this.handleDeleteThursAfternoonCell.bind(this)} 
-              DeleteFriCell={this.handleDeleteFriAfternoonCell.bind(this)} 
-              DeleteSatCell={this.handleDeleteSatAfternoonCell.bind(this)} 
+              DeleteAfternoonCell={this.handleDeleteAfternoonCell.bind(this)}
             />
 
         </table>

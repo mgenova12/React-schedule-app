@@ -2,8 +2,8 @@ import React from 'react'
 
 export class DeleteAfternoon extends React.Component {
     
-    onDeleteCell(id){
-      this.props.DeleteCell(id)
+    onDeleteCell(id, day){
+      this.props.DeleteCell(id, day)
       $.ajax({
         type: 'DELETE',
         url: '/api/v1/pizza/' + id,
@@ -20,7 +20,7 @@ export class DeleteAfternoon extends React.Component {
 
   render(){
     return(
-      <button onClick={this.onDeleteCell.bind(this, this.props.cell)}>Delete</button>
+      <button onClick={this.onDeleteCell.bind(this, this.props.cell, this.props.day)}>Delete</button>
     )
   }
 

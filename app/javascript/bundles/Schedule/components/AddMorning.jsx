@@ -183,24 +183,9 @@ export class AddMorning extends React.Component {
       });
     }
 
-    onDeleteCellMonday(id){
-      this.props.DeleteMonCell(id)
+    onDeleteMorningCell(id, day){
+      this.props.DeleteMorningCell(id, day)
     }    
-    onDeleteCellTuesday(id){
-      this.props.DeleteTuesCell(id)
-    }
-    onDeleteCellWednesday(id){
-      this.props.DeleteWedCell(id)
-    }
-    onDeleteCellThursday(id){
-      this.props.DeleteThursCell(id)
-    }
-    onDeleteCellFriday(id){
-      this.props.DeleteFriCell(id)
-    }
-    onDeleteCellSaturday(id){
-      this.props.DeleteSatCell(id)
-    }
 
     getNames(){
       $.ajax({
@@ -281,7 +266,8 @@ export class AddMorning extends React.Component {
             nameOptions={nameOptions} 
             name={Mon.employee_id ? monName : ""}/>
           <DeleteMorning 
-            DeleteCell={this.onDeleteCellMonday.bind(this)} 
+            DeleteCell={this.onDeleteMorningCell.bind(this)} 
+            day={Mon.day}
             cell={Mon.id}/> </td></tr>
         );
       })
@@ -308,7 +294,8 @@ export class AddMorning extends React.Component {
             nameOptions={nameOptions} 
             name={Tues.employee_id ? tuesName : ""}/>
           <DeleteMorning 
-            DeleteCell={this.onDeleteCellTuesday.bind(this)} 
+            DeleteCell={this.onDeleteMorningCell.bind(this)}
+            day={Tues.day} 
             cell={Tues.id}/> </td></tr>
         );
       })  
@@ -335,7 +322,8 @@ export class AddMorning extends React.Component {
           nameOptions={nameOptions} 
           name={Wed.employee_id ? wedName : ""}/>
           <DeleteMorning 
-          DeleteCell={this.onDeleteCellWednesday.bind(this)} 
+          DeleteCell={this.onDeleteMorningCell.bind(this)} 
+          day={Wed.day}
           cell={Wed.id}/> </td></tr>
         );
       })
@@ -362,7 +350,8 @@ export class AddMorning extends React.Component {
           nameOptions={nameOptions} 
           name={Thurs.employee_id ? thursName : ""}/>
           <DeleteMorning 
-          DeleteCell={this.onDeleteCellThursday.bind(this)} 
+          DeleteCell={this.onDeleteMorningCell.bind(this)} 
+          day={Thurs.day}
           cell={Thurs.id}/> </td></tr>
         );
       })
@@ -390,7 +379,8 @@ export class AddMorning extends React.Component {
             nameOptions={nameOptions} 
             name={Fri.employee_id ? friName : ""}/>
           <DeleteMorning 
-            DeleteCell={this.onDeleteCellFriday.bind(this)} 
+            DeleteCell={this.onDeleteMorningCell.bind(this)}
+            day={Fri.day} 
             cell={Fri.id}/> </td></tr>
         );
       })
@@ -417,7 +407,8 @@ export class AddMorning extends React.Component {
             nameOptions={nameOptions} 
             name={Sat.employee_id ? satName : ""}/>
           <DeleteMorning 
-            DeleteCell={this.onDeleteCellSaturday.bind(this)} 
+            DeleteCell={this.onDeleteMorningCell.bind(this)}
+            day={Sat.day} 
             cell={Sat.id}/> </td></tr>
         );
       })                  
