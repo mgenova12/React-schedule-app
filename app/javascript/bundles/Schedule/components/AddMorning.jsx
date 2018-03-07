@@ -252,7 +252,9 @@ export class AddMorning extends React.Component {
     }) 
 
     let timeOptions = this.state.times.map(ele => {
-      return <option key={ele.id} value={ele.time}> {ele.time}</option>
+      if (ele.am_pm === 'AM'){
+        return <option key={ele.id} value={ele.time}> {ele.time}</option>
+      }
     })
 
 

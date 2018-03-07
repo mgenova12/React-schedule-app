@@ -253,7 +253,9 @@ export class AddAfternoon extends React.Component {
     }) 
 
     let timeOptions = this.state.times.map(ele => {
+      if (ele.am_pm === 'PM'){
         return <option key={ele.id} value={ele.time}> {ele.time}</option>
+      }
     })
 
     if(this.props.pizzaAfternoon){

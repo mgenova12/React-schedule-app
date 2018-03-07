@@ -36,7 +36,7 @@ export class AfternoonOptions extends React.Component {
     let hourId;
 
     this.props.timeOptions.map(ele => {
-      if(ele.props.value === event.target.value){
+      if(ele && ele.props.value === event.target.value){
         hourId = ele.key;
       }
     })

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+  get '/hours/new' => 'hours#new'
+  post '/hours' => 'hours#create'
+
   get '/' => 'schedules#index'
+
 
   namespace :api do 
     namespace :v1 do 
@@ -13,7 +17,6 @@ Rails.application.routes.draw do
       get '/employees' => 'employees#index'
       
       get '/hours' => 'hours#index'
-
     end
   end
 

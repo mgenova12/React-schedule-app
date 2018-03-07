@@ -1,0 +1,15 @@
+<h1>Manage Hours!</h1>
+
+<%= form_for @hour do |f| %>
+  
+  <div class="form-group">
+    Time: <%= f.text_field :time %>
+    <%= f.select :am_pm, [["AM", "AM"], ["PM", 'PM']] %>
+    <%= f.submit "Submit" %>
+  </div>
+
+<% end %>
+
+<% @hours.each do |hour| %>
+  <%= hour.time %><br>
+<% end %>
