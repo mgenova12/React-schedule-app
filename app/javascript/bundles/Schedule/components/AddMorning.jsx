@@ -78,6 +78,12 @@ export class AddMorning extends React.Component {
       });
     }
 
+    getDates(dayNum){
+      var curr = new Date;
+      var first = curr.getDate() - curr.getDay();  
+      return new Date(curr.setDate(first+dayNum)).toLocaleDateString();
+    }
+
   componentDidMount(){
     this.getNames();
     this.getTimes();
@@ -100,7 +106,6 @@ export class AddMorning extends React.Component {
         return <option key={ele.id} value={ele.time}> {ele.time}</option>
       }
     })
-
 
     if(this.props.pizzaMorning){
       monMorning = this.props.pizzaMorning.Morning.Monday.map(Mon => {
@@ -281,7 +286,7 @@ export class AddMorning extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Monday </th>
+                              <th scope="col">Monday {this.getDates(1)} </th>
                           </tr>
                       </thead>
                       <tbody>{monMorning}</tbody>
@@ -291,7 +296,7 @@ export class AddMorning extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Tuesday</th>
+                              <th scope="col">Tuesday {this.getDates(2)}</th>
                           </tr>
                       </thead>
                       <tbody>{tuesMorning}</tbody>
@@ -301,7 +306,7 @@ export class AddMorning extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Wednesday</th>
+                              <th scope="col">Wednesday {this.getDates(3)}</th>
                           </tr>
                       </thead>
                       <tbody>{wedMorning}</tbody>
@@ -311,7 +316,7 @@ export class AddMorning extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Thursday</th>
+                              <th scope="col">Thursday {this.getDates(4)}</th>
                           </tr>
                       </thead>
                       <tbody>{thursMorning}</tbody>
@@ -321,7 +326,7 @@ export class AddMorning extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Friday</th>
+                              <th scope="col">Friday {this.getDates(5)}</th>
                           </tr>
                       </thead>
                       <tbody>{friMorning}</tbody>
@@ -331,7 +336,7 @@ export class AddMorning extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Saturday</th>
+                              <th scope="col">Saturday {this.getDates(6)}</th>
                           </tr>
                       </thead>
                       <tbody>{satMorning}</tbody>

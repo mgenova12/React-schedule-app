@@ -78,6 +78,12 @@ export class AddAfternoon extends React.Component {
       });
     }
 
+    getDates(dayNum){
+      var curr = new Date;
+      var first = curr.getDate() - curr.getDay();  
+      return new Date(curr.setDate(first+dayNum)).toLocaleDateString();
+    }    
+
   componentDidMount(){
     this.getNames();
     this.getTimes();
@@ -280,7 +286,7 @@ export class AddAfternoon extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Monday</th>
+                              <th scope="col">Monday {this.getDates(1)}</th>
                           </tr>
                       </thead>
                       <tbody>{monAfternoon}</tbody>
@@ -290,7 +296,7 @@ export class AddAfternoon extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Tuesday</th>
+                              <th scope="col">Tuesday {this.getDates(2)}</th>
                           </tr>
                       </thead>
                       <tbody>{tuesAfternoon}</tbody>
@@ -300,7 +306,7 @@ export class AddAfternoon extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Wednesday</th>
+                              <th scope="col">Wednesday {this.getDates(3)}</th>
                           </tr>
                       </thead>
                       <tbody>{wedAfternoon}</tbody>
@@ -310,7 +316,7 @@ export class AddAfternoon extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Thursday</th>
+                              <th scope="col">Thursday {this.getDates(4)}</th>
                           </tr>
                       </thead>
                       <tbody>{thursAfternoon}</tbody>
@@ -320,7 +326,7 @@ export class AddAfternoon extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Friday</th>
+                              <th scope="col">Friday {this.getDates(5)}</th>
                           </tr>
                       </thead>
                       <tbody>{friAfternoon}</tbody>
@@ -330,7 +336,7 @@ export class AddAfternoon extends React.Component {
                   <table className="table table-bordered">
                       <thead>
                           <tr>
-                              <th scope="col">Saturday</th>
+                              <th scope="col">Saturday {this.getDates(6)}</th>
                           </tr>
                       </thead>
                       <tbody>{satAfternoon}</tbody>
