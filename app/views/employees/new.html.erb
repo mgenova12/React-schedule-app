@@ -1,2 +1,16 @@
-<h1>Employees#new</h1>
-<p>Find me in app/views/employees/new.html.erb</p>
+<h1>Manage Employees!</h1>
+
+<%= form_for @employee do |f| %>
+  
+  <div class="form-group">
+    Name: <%= f.text_field :name %>
+    <%= f.submit "Submit" %>
+  </div>
+
+<% end %>
+<br>
+
+<% @employees.each do |employee| %>
+  <%= employee.name %> <br>
+
+<% end %>

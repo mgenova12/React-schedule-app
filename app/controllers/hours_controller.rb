@@ -5,7 +5,7 @@ class HoursController < ApplicationController
   end
 
   def create 
-    Hour.create!(
+    Hour.create(
       time: params[:hour]['time'],
       am_pm: params[:hour]['am_pm']
     )

@@ -1,11 +1,15 @@
 class EmployeesController < ApplicationController
-  
   def new
-  
+    @employee = Employee.new
+    @employees = Employee.all
   end
 
-  def update
+  def create
+    Employee.create(
+      name:params[:employee]['name']
+    )
 
+    redirect_to '/employees/new'
   end
 
 end

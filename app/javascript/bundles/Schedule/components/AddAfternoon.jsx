@@ -11,20 +11,13 @@ export class AddAfternoon extends React.Component {
         times:[]
       }
 
-      this.onAddCellMonday = this.onAddCellMonday.bind(this);
-      this.onAddCellTuesday = this.onAddCellTuesday.bind(this);
-      this.onAddCellWednesday = this.onAddCellWednesday.bind(this);
-      this.onAddCellThursday = this.onAddCellThursday.bind(this);
-      this.onAddCellFriday = this.onAddCellFriday.bind(this);
-      this.onAddCellSaturday = this.onAddCellSaturday.bind(this);
-
       this.getNames = this.getNames.bind(this);
       this.getTimes = this.getTimes.bind(this);
     }
 
-    onAddCellMonday(){
+    onAddCellAfternoon(day){
       var parameters = {
-        day: "Monday",
+        day: day,
         time_of_day: "Afternoon"
       };
       $.ajax({
@@ -37,142 +30,7 @@ export class AddAfternoon extends React.Component {
           this.setState({          
           newCell:{
             id: response.id,
-            day: "Monday",
-            time_of_day: "Afternoon"
-          }}, function(){
-            this.props.AddAfternoonCell(this.state.newCell, this.state.newCell.day)
-          });
-        }.bind(this),
-        error: function(xhr, status, err){
-          console.log(err);
-        }
-      });
-    }
-
-    onAddCellTuesday(){
-      var parameters = {
-        day: "Tuesday",
-        time_of_day: "Afternoon"
-      };
-      $.ajax({
-        type: 'POST',
-        url: '/api/v1/pizza',
-        dataType: 'json',
-        data: parameters,
-        cache: false,
-        success: function(response){
-          this.setState({          
-          newCell:{
-            id: response.id,
-            day: "Tuesday",
-            time_of_day: "Afternoon"
-          }}, function(){
-            this.props.AddAfternoonCell(this.state.newCell, this.state.newCell.day)
-          });
-        }.bind(this),
-        error: function(xhr, status, err){
-          console.log(err);
-        }
-      });
-    }
-
-    onAddCellWednesday(){
-      var parameters = {
-        day: "Wednesday",
-        time_of_day: "Afternoon"
-      };
-      $.ajax({
-        type: 'POST',
-        url: '/api/v1/pizza',
-        dataType: 'json',
-        data: parameters,
-        cache: false,
-        success: function(response){
-          this.setState({          
-          newCell:{
-            id: response.id,
-            day: "Wednesday",
-            time_of_day: "Afternoon"
-          }}, function(){
-            this.props.AddAfternoonCell(this.state.newCell, this.state.newCell.day)
-          });
-        }.bind(this),
-        error: function(xhr, status, err){
-          console.log(err);
-        }
-      });
-    }
-
-    onAddCellThursday(){
-      var parameters = {
-        day: "Thursday",
-        time_of_day: "Afternoon"
-      };
-      $.ajax({
-        type: 'POST',
-        url: '/api/v1/pizza',
-        dataType: 'json',
-        data: parameters,
-        cache: false,
-        success: function(response){
-          this.setState({          
-          newCell:{
-            id: response.id,
-            day: "Thursday",
-            time_of_day: "Afternoon"
-          }}, function(){
-            this.props.AddAfternoonCell(this.state.newCell, this.state.newCell.day)
-          });
-        }.bind(this),
-        error: function(xhr, status, err){
-          console.log(err);
-        }
-      });
-    }
-
-    onAddCellFriday(){
-      var parameters = {
-        day: "Friday",
-        time_of_day: "Afternoon"
-      };
-      $.ajax({
-        type: 'POST',
-        url: '/api/v1/pizza',
-        dataType: 'json',
-        data: parameters,
-        cache: false,
-        success: function(response){
-          this.setState({          
-          newCell:{
-            id: response.id,
-            day: "Friday",
-            time_of_day: "Afternoon"
-          }}, function(){
-            this.props.AddAfternoonCell(this.state.newCell, this.state.newCell.day)
-          });
-        }.bind(this),
-        error: function(xhr, status, err){
-          console.log(err);
-        }
-      });
-    }
-
-    onAddCellSaturday(){
-      var parameters = {
-        day: "Saturday",
-        time_of_day: "Afternoon"
-      };
-      $.ajax({
-        type: 'POST',
-        url: '/api/v1/pizza',
-        dataType: 'json',
-        data: parameters,
-        cache: false,
-        success: function(response){
-          this.setState({          
-          newCell:{
-            id: response.id,
-            day: "Saturday",
+            day: day,
             time_of_day: "Afternoon"
           }}, function(){
             this.props.AddAfternoonCell(this.state.newCell, this.state.newCell.day)
@@ -480,12 +338,12 @@ export class AddAfternoon extends React.Component {
               </td>
             </tr>
             <tr> 
-              <td><button onClick={this.onAddCellMonday}>Add +</button></td>
-              <td><button onClick={this.onAddCellTuesday}>Add +</button></td>
-              <td><button onClick={this.onAddCellWednesday}>Add +</button></td>
-              <td><button onClick={this.onAddCellThursday}>Add +</button></td>
-              <td><button onClick={this.onAddCellFriday}>Add +</button></td>
-              <td><button onClick={this.onAddCellSaturday}>Add +</button></td>
+              <td><button onClick={this.onAddCellAfternoon.bind(this, 'Monday')}>Add +</button></td>
+              <td><button onClick={this.onAddCellAfternoon.bind(this, 'Tuesday')}>Add +</button></td>
+              <td><button onClick={this.onAddCellAfternoon.bind(this, 'Wednesday')}>Add +</button></td>
+              <td><button onClick={this.onAddCellAfternoon.bind(this, 'Thursday')}>Add +</button></td>
+              <td><button onClick={this.onAddCellAfternoon.bind(this, 'Friday')}>Add +</button></td>
+              <td><button onClick={this.onAddCellAfternoon.bind(this, 'Saturday')}>Add +</button></td>
             </tr>
         </tbody>
       )

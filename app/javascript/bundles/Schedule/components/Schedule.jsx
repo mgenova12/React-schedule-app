@@ -53,7 +53,7 @@ export default class Schedule extends React.Component {
     this.setState({Pizza:pizza})
   }  
 
-  //DELETE AFTERNOONS------------------------
+  //DELETE AFTERNOONS---------------------
   handleDeleteAfternoonCell(id, day){
     let pizza = this.state.Pizza;
     let index = pizza.Afternoon[day].findIndex(x => x.id === id)
