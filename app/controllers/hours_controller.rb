@@ -1,4 +1,5 @@
 class HoursController < ApplicationController
+  layout "schedule"
   def new
     @hour = Hour.new
     @hours = Hour.all

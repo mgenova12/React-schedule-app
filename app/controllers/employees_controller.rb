@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  layout "schedule"
   def new
     @employee = Employee.new
     @employees = Employee.all

@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
+  get '/' => 'schedules#index'
+
   get '/hours/new' => 'hours#new'
   post '/hours' => 'hours#create'
 
   get '/employees/new' => 'employees#new'
   post '/employees' => 'employees#create'
 
-  get '/' => 'schedules#index'
-
+  get '/pizza_schedule' => 'pizza_schedules#index'
 
   namespace :api do 
     namespace :v1 do 
