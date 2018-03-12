@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {AddAfternoon} from './AddAfternoon'
 import {AddMorning} from './AddMorning'
+import {SubmitSchedule} from './SubmitSchedule'
 
 export default class Schedule extends React.Component {
 
@@ -80,6 +81,7 @@ export default class Schedule extends React.Component {
             />
 
         </table>
+        <SubmitSchedule PizzaSchedule={this.state.Pizza}/>
       </div>
 
     )

@@ -4,5 +4,4 @@ class Schedule::PizzasController < ApplicationController
     
   end
 
-
 end
